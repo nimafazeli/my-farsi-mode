@@ -15,7 +15,7 @@ Add the `my-farsi-mode` to the `dotspacemacs-additional-packages` list in your `
 #+BEGIN_SRC emacs-lisp
   (defun dotspacemacs/layers ()
     (setq-default
-     dotspacemacs-additional-packages '((recipe :fetcher github :repo "nima-fazeli/my-farsi-mode"))
+     dotspacemacs-additional-packages '(my-farsi-mode :location (recipe :fetcher github :repo "nimafazeli/my-farsi-mode"))
      ))
 
 #+END_SRC
