@@ -1,0 +1,52 @@
+#+title: Farsi minor mode for emacs
+#+author: Nima Fazeli
+
+
+This is a simple minor mode for emacs that allows you to type in Farsi while using evil-mode.
+It is based on the emacs input method `transliterate-banan`.
+To improve readability, it uses the olivetti mode to center the text.
+
+* Installation
+
+** Spacemacs
+
+Add the `my-farsi-mode` to the `dotspacemacs-additional-packages` list in your `.spacemacs` file. Since the package is not on melpa, do this as the following:
+
+#+BEGIN_SRC emacs-lisp
+  (defun dotspacemacs/layers ()
+    (setq-default
+     dotspacemacs-additional-packages '((recipe :fetcher github :repo "nima-fazeli/my-farsi-mode"))
+     ))
+
+#+END_SRC
+
+Then, add the following to your `dotspacemacs/user-config` function:
+
+#+BEGIN_SRC emacs-lisp
+  (require 'my-farsi-mode)
+#+END_SRC
+
+** Manual
+
+Download the `my-farsi-mode.el` file and put it in your load path. Then, add the following to your `.emacs` file:
+
+#+BEGIN_SRC emacs-lisp
+  (require 'my-farsi-mode)
+
+#+END_SRC
+
+
+* Usage
+
+You can toggle the minor mode by calling `my-farsi-mode` function. You can also make the mode enable in the buffer by adding the following to the buffer:
+
+#+BEGIN_SRC emacs-lisp
+  ;; -*- mode: my-farsi-mode -*-
+#+END_SRC
+
+
+
+
+
+                     
+
