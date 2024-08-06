@@ -20,10 +20,22 @@ Add the `my-farsi-mode` to the `dotspacemacs-additional-packages` list in your `
 
 #+END_SRC
 
+Alternatively, you can clone the repository to your `~/.emacs.d/private/` directory and add the following to your `dotspacemacs-configuration-layers` list in your `.spacemacs` file:
+
+#+BEGIN_SRC emacs-lisp
+    (defun dotspacemacs/layers ()
+      (setq-default
+       dotspacemacs-configuration-layers '(my-farsi-mode :location local)
+       ))
+#+END_SRC 
+
 Then, add the following to your `dotspacemacs/user-config` function:
 
 #+BEGIN_SRC emacs-lisp
-  (require 'my-farsi-mode)
+  (use-package my-farsi-mode
+    :commands (my-farsi-mode))
+  
+  (global-set-key (kbd "C-c t") 'toggle-input-method)
 #+END_SRC
 
 ** Manual
@@ -44,6 +56,7 @@ You can toggle the minor mode by calling `my-farsi-mode` function. You can also 
   ;; -*- mode: my-farsi-mode -*-
 #+END_SRC
 
+You can also use the `toggle-input-method` function to toggle the input method in order to switch between Farsi and English. The default keybinding for this function is `C-c t`.
 
 
 
