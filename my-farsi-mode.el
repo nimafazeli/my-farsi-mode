@@ -49,13 +49,16 @@
       (evil-local-set-key 'normal (kbd "a") 'evil-append))))
 
 (defun my/toggle-evil-escape-key-sequence (enable)
-  "Toggle adding/removing Farsi sequence to `evil-escape-key-sequence`."
+  "Toggle `evil-escape-key-sequence` between the original and Farsi-specific sequence locally."
   (if enable
-      ;; Add Farsi sequence if not already present
-      (unless (string-match "فد" evil-escape-key-sequence)
+      (progn
+        ;; Make evil-escape-key-sequence buffer-local
+        (make-local-variable 'evil-escape-key-sequence)
+        ;; Save the original sequence if not already saved
         (setq my-original-evil-escape-key-sequence evil-escape-key-sequence)
-        (setq evil-escape-key-sequence (concat evil-escape-key-sequence "فد")))
-    ;; Restore original sequence by removing Farsi sequence
+        ;; Set the Farsi sequence
+        (setq evil-escape-key-sequence "فد"))
+    ;; Restore the original sequence in the current buffer
     (setq evil-escape-key-sequence my-original-evil-escape-key-sequence)))
 
 ;;;###autoload
