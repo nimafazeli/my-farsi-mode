@@ -49,16 +49,14 @@
       (evil-local-set-key 'normal (kbd "a") 'evil-append))))
 
 (defun my/toggle-evil-escape-key-sequence (enable)
-  "Toggle `evil-escape-key-sequence` based on Farsi mode."
+  "Toggle adding/removing Farsi sequence to `evil-escape-key-sequence`."
   (if enable
-      (progn
-        (setq evil-escape-key-sequence "فد")
-        (setq evil-escape-delay 0.1)
-        (message "Farsi escape key sequence activated: %s with delay: %s" evil-escape-key-sequence evil-escape-delay))
-    (progn
-      (setq evil-escape-key-sequence my-original-evil-escape-key-sequence)
-      (setq evil-escape-delay my-original-evil-escape-delay)
-      (message "Restored escape key sequence: %s with delay: %s" evil-escape-key-sequence evil-escape-delay))))
+      ;; Add Farsi sequence if not already present
+      (unless (string-match "فد" evil-escape-key-sequence)
+        (setq my-original-evil-escape-key-sequence evil-escape-key-sequence)
+        (setq evil-escape-key-sequence (concat evil-escape-key-sequence "فد")))
+    ;; Restore original sequence by removing Farsi sequence
+    (setq evil-escape-key-sequence my-original-evil-escape-key-sequence)))
 
 ;;;###autoload
 (define-minor-mode my-farsi-mode
