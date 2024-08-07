@@ -35,18 +35,12 @@
         (evil-local-set-key 'motion (kbd "h") 'evil-forward-char)
         (evil-local-set-key 'motion (kbd "l") 'evil-backward-char)
         (evil-local-set-key 'motion (kbd "$") 'evil-beginning-of-line)
-        (evil-local-set-key 'motion (kbd "^") 'evil-end-of-line)
-        (evil-local-set-key 'normal (kbd "a")
-                            (lambda ()
-                              (interactive)
-                              (evil-backward-char)
-                              (evil-append 1))))
+        (evil-local-set-key 'motion (kbd "^") 'evil-end-of-line))
     (progn
       (evil-local-set-key 'motion (kbd "h") 'evil-backward-char)
       (evil-local-set-key 'motion (kbd "l") 'evil-forward-char)
       (evil-local-set-key 'motion (kbd "$") 'evil-end-of-line)
-      (evil-local-set-key 'motion (kbd "^") 'evil-beginning-of-line)
-      (evil-local-set-key 'normal (kbd "a") 'evil-append))))
+      (evil-local-set-key 'motion (kbd "^") 'evil-beginning-of-line))))
 
 (defun my/toggle-evil-escape-key-sequence (enable)
   "Toggle `evil-escape-key-sequence` between the original and Farsi-specific sequence locally."
